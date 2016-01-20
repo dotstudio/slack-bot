@@ -1,5 +1,6 @@
 'use strict';
 
+console.log(process.env);
 if (!process.env.token) {
     console.log('Error: Specify token in environment');
     process.exit(1);
@@ -17,9 +18,10 @@ http.createServer((req, res) => {
   res.end('Hello World\n');
 
   bot.say({
-    text: 'my message text',
+    text: 'Mesage',
     channel: 'C0B5VND7D'
   });
+
 }).listen(3000);
 
 require('./myscript/hello')(controller);
