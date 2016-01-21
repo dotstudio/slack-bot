@@ -14,7 +14,7 @@ module.exports = (controller) => {
           if (user && user.name) {
               bot.reply(message,'Hello ' + user.name + '!!');
           } else {
-              bot.reply(message,'Hello!!!?!!');
+              bot.reply(message,'Hello! everyone!');
           }
       });
   });
