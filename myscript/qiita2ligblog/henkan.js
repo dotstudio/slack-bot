@@ -30,9 +30,10 @@ module.exports = (controller) => {
 
             //qiitaなら実行
             else{
+              bot.reply(message, 'ゴゴゴゴゴ....');
               henkan(url, (res) => {
                 qiitapost(res.title, res.body, (url) => {
-                  bot.reply(message, '変換完了しました。'+url);
+                  bot.reply(message, '変換完了です！ '+url);
                 });
               });
             }
