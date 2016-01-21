@@ -121,9 +121,15 @@ function beforeAction(text){
 
 //全ての処理の後
 function afterAction(text){
-  console.log(text.green);
+  // console.log(text.green);
+
+  let title = text.split('</p>')[0];
+  title = title.split('<p>')[1];
+  text = text.replace(`<p>${title}</p>`,'');
   text = '```\n'+text+'\n```';
-  return text;
+  let body = text;
+
+  return {title:title,body:body};
 }
 
 module.exports = (url, cb) => {
@@ -142,9 +148,7 @@ module.exports = (url, cb) => {
       let text = body;
       text = beforeAction(text);
       text = marked(text, {renderer: renderer});
-      text = afterAction(text);
-
-      cb(text);
+      cb(afterAction(text));
     });
   }).on('error', (e) => {
     console.log(e.message); //エラー時
