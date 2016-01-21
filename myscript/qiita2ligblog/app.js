@@ -122,7 +122,7 @@ function beforeAction(text){
 //全ての処理の後
 function afterAction(text){
   console.log(text.green);
-  text += '```\n'+text+'\n```';
+  text = '```\n'+text+'\n```';
   return text;
 }
 
