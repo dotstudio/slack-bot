@@ -1,8 +1,13 @@
 'use strict';
 
-console.log(process.env);
+// console.log(process.env.token);
 if (!process.env.token) {
     console.log('Error: Specify token in environment');
+    process.exit(1);
+}
+
+if (!process.env.qiitatoken) {
+    console.log('Error: Specify qiita token in environment');
     process.exit(1);
 }
 
