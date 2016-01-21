@@ -9,7 +9,7 @@ token=xxxx qiitatoken=xxxx node app.js
 pm2実行
 
 ```
-token=xxxx qiitatoken=xxxx pm2 start app.js
+token=xxxx qiitatoken=xxxx pm2 start app.js --watch
 ```
 
 # [Botkit](http://howdy.ai/botkit) - Building Blocks for Building Bots
