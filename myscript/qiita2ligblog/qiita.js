@@ -17,6 +17,6 @@ module.exports = (title, body, cb) => {
       return;
     }
     console.log('successfully posted to Qiita.');
-    cb(body.url);
+    cb({url: body.url, id:body.id});
   });
 }

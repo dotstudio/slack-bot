@@ -2,6 +2,7 @@
 
 let henkan = require('./mdmain');
 let qiitapost = require('./qiita');
+let qiitadel = require('./qiita-del');
 
 module.exports = (controller) => {
   controller.hears(['henkan'],'direct_message,direct_mention,mention', (bot, message) => {
@@ -32,8 +33,9 @@ module.exports = (controller) => {
             else{
               bot.reply(message, 'ゴゴゴゴゴ....');
               henkan(url, (res) => {
-                qiitapost(res.title, res.body, (url) => {
-                  bot.reply(message, '変換完了です！ '+url);
+                qiitapost(res.title, res.body, (res) => {
+                  bot.reply(message, '変換完了です！ '+ res.url);
+                  qiitadel(res.id);
                 });
               });
             }
