@@ -35,3 +35,4 @@ require('./myscript/who_am_i')(controller);
 require('./myscript/shutdown')(controller);
 require('./myscript/uptime')(controller);
 require('./myscript/qiita2ligblog/henkan')(controller);
+require('./myscript/pendingList/app')(controller);
