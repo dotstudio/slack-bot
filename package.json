@@ -4,14 +4,16 @@
   "description": "Building blocks for Building Bots",
   "main": "lib/Botkit.js",
   "dependencies": {
+    "aa": "^0.1.32",
     "body-parser": "^1.14.2",
     "colors": "^1.1.2",
     "express": "^4.13.3",
     "jfs": "^0.2.6",
     "marked": "^0.3.5",
+    "milkcocoa": "^0.4.1",
     "mustache": "^2.2.1",
     "qiita": "^1.2.0",
-    "request": "^2.67.0",
+    "request": "^2.69.0",
     "ws": "^1.0.0"
   },
   "devDependencies": {
