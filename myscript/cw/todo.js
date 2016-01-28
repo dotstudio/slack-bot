@@ -9,10 +9,10 @@ let aa = require('aa');
 let request = require('request');
 const ROOM_ID = '43484166';
 
-function addTask(text, userList){
+function addTask(text, limit, userList){
   let task = {
     body: text,
-    limit: 0,
+    limit: limit,
     to_ids: userList,
   };
 
@@ -56,10 +56,10 @@ function getMember(){
   });
 }
 
-module.exports = (message, cb) => {
+module.exports = (message,time, cb) => {
   aa(function*() {
     let userList = yield getMember('a.txt');
-    let res = yield addTask(message, userList);
+    let res = yield addTask(message, time, userList);
     return res;
   }).then(
     function (val) {
