@@ -36,3 +36,5 @@ require('./myscript/shutdown')(controller);
 require('./myscript/uptime')(controller);
 require('./myscript/qiita2ligblog/henkan')(controller);
 require('./myscript/pendingList/app')(controller);
+require('./myscript/milkcocoaTodo/')(controller);
+require('./myscript/cw/')(controller);
