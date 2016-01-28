@@ -10,11 +10,12 @@ module.exports = (controller) => {
         } else {
           let input = message.text.split(' ');
           let mes = '';
-          for (let i = 1, len = input.length; i < len; i++) {
+          let time = parseInt( new Date(input[1]) /1000 );
+          for (let i = 2, len = input.length; i < len; i++) {
             mes += input[i]+' ';
           }
           console.log(mes);
-          todo(mes, () => {
+          todo(mes,time, () => {
             bot.reply(message, 'チャットワークにタスク追加しました。');
           });
         }
