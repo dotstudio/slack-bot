@@ -4,13 +4,13 @@ const vo = require('vo'); //generetor/yeld
 const getChannelId = require('./lib/channel');
 const http = require('http');
 const URL = 'http://liginc.co.jp/devrel';
-const TARGET_CHANNEL_NAME = 'tool';
+const TARGET_CHANNEL_NAME = 'zatsudan';
 const CronJob = require('cron').CronJob;
 let last_url = '';
 
 module.exports = (bot) => {
 
-  new CronJob('00 00 04 * * *', () => {
+  new CronJob('00 00 10 * * *', () => {
     update_check();
   }, null, true, 'Asia/Tokyo');
 
