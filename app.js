@@ -13,10 +13,15 @@ if (!process.env.qiitatoken) {
 
 let Botkit = require('./lib/Botkit.js');
 let os = require('os');
-let controller = Botkit.slackbot({debug: true});
+let controller = Botkit.slackbot({debug: false});
 let bot = controller.spawn({token: process.env.token}).startRTM();
 let http = require('http');
 // let say = require('./myscript/say')(controller);
+
+// controller.spawn({token: process.env.token}).startRTM().say({
+//   text: 'Mesage',
+//   channel: 'C0B5VND7D'
+// });
 
 http.createServer((req, res) => {
   res.writeHead(200, {'Content-Type': 'text/plain'});
@@ -29,12 +34,16 @@ http.createServer((req, res) => {
 
 }).listen(3000);
 
-require('./myscript/hello')(controller);
-require('./myscript/call_me')(controller);
-require('./myscript/who_am_i')(controller);
-require('./myscript/shutdown')(controller);
-require('./myscript/uptime')(controller);
-require('./myscript/qiita2ligblog/henkan')(controller);
-require('./myscript/pendingList/app')(controller);
-require('./myscript/milkcocoaTodo/')(controller);
-require('./myscript/cw/')(controller);
+let dir = './myscript/';
+require(dir+'hello')(controller);
+require(dir+'call_me')(controller);
+require(dir+'who_am_i')(controller);
+require(dir+'shutdown')(controller);
+require(dir+'uptime')(controller);
+require(dir+'qiita2ligblog/henkan')(controller);
+require(dir+'pendingList/app')(controller);
+require(dir+'milkcocoaTodo/')(controller);
+require(dir+'cw/')(controller);
+require(dir+'lig_blog_update')(bot);
+
+// require(dir+'sinchoku')(controller);
