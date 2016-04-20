@@ -13,7 +13,6 @@ function getChannelId(target_channel_name){
         for (let channel of channels) {
           if(channel.name === target_channel_name){
             resolve(channel.id);
-            // console.log(`${channel.name}のチャンネルIDは${channel.id}です。`);
           }
         }
       }
