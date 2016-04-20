@@ -10,7 +10,7 @@ let last_url = '';
 
 module.exports = (bot) => {
 
-  new CronJob('00 40 03 * * *', () => {
+  new CronJob('00 45 03 * * *', () => {
     update_check();
   }, null, true, 'Asia/Tokyo');
 
