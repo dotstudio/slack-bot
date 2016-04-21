@@ -19,26 +19,29 @@ function update(){
   return exec(cmd, {timeout: TIMEOUT}, (error, stdout, stderr) => {
     console.log('stdout: '+(stdout||'none'));
     console.log('stderr: '+(stderr||'none'));
+    sendSlack();
     if(error !== null){
       console.log('exec error: '+error);
     }else{
-
       //slackに更新通知
-      getChannelId(TARGET_CHANNEL_NAME)
-      .then(
-        id => {
-          bot.say({
-            text: 'ゴゴゴ...\n LIG子がパワーアップしました。',
-            channel: id
-          });
-          console.log('ok');
-        },id => {
-          console.log('error');
-        }
-      );
     }
   });
 };
+
+function sendSlack(){
+  getChannelId(TARGET_CHANNEL_NAME)
+  .then(
+    id => {
+      bot.say({
+        text: 'ゴゴゴ...\n LIG子がパワーアップしました。',
+        channel: id
+      });
+      console.log('ok');
+    },id => {
+      console.log('error');
+    }
+  );
+}
 
 http.createServer((req, res) => {
   if(req.method == 'POST'){
