@@ -24,7 +24,6 @@ function update(){
     if(error !== null){
       console.log('exec error: '+error);
     }else{
-      //slackに更新通知
       sendSlack();
     }
   });
