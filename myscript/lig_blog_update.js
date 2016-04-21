@@ -13,7 +13,7 @@ module.exports = (bot) => {
   new CronJob('00 00 10 * * *', () => {
     update_check();
   }, null, true, 'Asia/Tokyo');
-
+  
   function update_check(){
     vo(function* (){
       let update_url = yield _fetch(); //最新記事のURLを取得

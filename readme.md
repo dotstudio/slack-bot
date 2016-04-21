@@ -6,7 +6,7 @@
 token=xxxx qiitatoken=xxxx node app.js
 ```
 
-pm2実行
+pm2実行!
 
 ```
 token=xxxx qiitatoken=xxxx pm2 start app.js --watch
