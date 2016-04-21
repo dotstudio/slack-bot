@@ -7,7 +7,7 @@ const os = require('os');
 const controller = Botkit.slackbot({debug: false});
 const bot = controller.spawn({token: process.env.token}).startRTM();
 const TARGET_CHANNEL_NAME = 'dotstudio_bot';
-
+console.log(bot);
 //メイン
 let exec = require('child_process').exec;
 let http = require('http');
@@ -29,19 +29,19 @@ function update(){
   });
 };
 
-function sendSlack(){
-  getChannelId(TARGET_CHANNEL_NAME)
-  .then(
-    id => {
-      bot.say({
+setTimeout(() => {
+  bot.say({
         text: 'ゴゴゴ...\n LIG子がパワーアップしました。',
-        channel: id
+        channel: 'G12GBE1GF'
       });
-      console.log('ok');
-    },id => {
-      console.log('error');
-    }
-  );
+},5000);
+
+function sendSlack(){
+ console.log('----up');
+ getChannelId(TARGET_CHANNEL_NAME)
+  .then((id) => {
+    console.log('ok',id);
+  });
 }
 
 http.createServer((req, res) => {
