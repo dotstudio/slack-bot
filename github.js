@@ -13,7 +13,7 @@ let exec = require('child_process').exec;
 let http = require('http');
 const PORT = 3001;
 const TIMEOUT = 90000;
-let cmd = `cd ${__dirname}/slack-bot && git pull origin master && npm i`;
+let cmd = `cd /home/n0bisuke/slack-bot && git pull origin master && npm i`;
 
 function update(){
   return exec(cmd, {timeout: TIMEOUT}, (error, stdout, stderr) => {
