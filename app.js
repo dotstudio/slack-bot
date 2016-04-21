@@ -1,6 +1,6 @@
 'use strict';
 
-// console.log(process.env.token);
+console.log(process.env.token);
 if (!process.env.token) {
     console.log('Error: Specify token in environment');
     process.exit(1);
