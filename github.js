@@ -11,12 +11,11 @@ const TARGET_GROUP_NAME = 'G12GBE1GF';
 
 //メイン
 let exec = require('child_process').exec;
-let http = require('http');
 const PORT = 3001;
 const TIMEOUT = 90000;
 let cmd = `cd /home/n0bisuke/slack-bot && git pull origin master && npm i`;
 
-function update(){
+function update(mes){
   return exec(cmd, {timeout: TIMEOUT}, (error, stdout, stderr) => {
     console.log('stdout: '+(stdout||'none'));
     console.log('stderr: '+(stderr||'none'));
@@ -24,24 +23,46 @@ function update(){
     if(error !== null){
       console.log('exec error: '+error);
     }else{
-      sendSlack();
+      sendSlack(mes);
     }
   });
 };
 
-function sendSlack(){
+function sendSlack(mes){
   bot.say({
-    text: 'ゴゴゴ...\n LIG子がパワーアップしました!!',
+    text: 'ゴゴゴ...\n LIG子がパワーアップしました!!\n'+mes,
     channel: TARGET_GROUP_NAME
   });
 }
 
-http.createServer((req, res) => {
-  if(req.method == 'POST'){
-    update();
-  }else{
-    res.writeHead(200, {'Content-Type': 'text/plain'});
-    res.end('POST REQUEST ONLY\n');
-    console.log('error!');
+const Hapi = require('hapi');
+const server = new Hapi.Server();
+
+server.connection({port: PORT});
+server.route({
+  method: 'POST',
+  path:'/',
+  handler: (request, reply) => {
+    reply().code(204);
+    console.log(request.query);
+    console.log('-------\n');
+    if(!request.payload.head_commit) return;
+    let body = request.payload.head_commit;
+    let mes = `${body.message} by @${body.author.username} ${body.url}`;
+    update(mes);
   }
-}).listen(PORT);
+});
+
+server.route({
+  method: 'GET',
+  path:'/',
+  handler: (request, reply) => {
+    reply().code(204);
+    console.log(request.query);
+    console.log('-------\n');
+  }
+});
+
+server.start(() => {
+  console.log('Server running at:', server.info.uri);
+});
