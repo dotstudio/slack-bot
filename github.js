@@ -24,6 +24,7 @@ function update(){
       console.log('exec error: '+error);
     }else{
       //slackに更新通知
+      
     }
   });
 };
